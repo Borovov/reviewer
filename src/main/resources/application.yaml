@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: reviewer
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/reviewer
+    username: reviewer
+    password: reviewer
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+  liquibase:
+    enabled: true
+    default-schema: ${DB_SCHEMA:pmp_ms_nsi}
+    liquibase-schema: ${DB_SCHEMA:pmp_ms_nsi}
+    change-log: classpath:db/changelog/db.changelog-master.xml

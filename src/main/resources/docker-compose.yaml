@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: reviewer
+      POSTGRES_USER: reviewer
+      POSTGRES_PASSWORD: reviewer
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+  postgres_data:
+    driver: local
