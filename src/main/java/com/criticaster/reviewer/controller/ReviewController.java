@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Slf4j
 @Controller
-@RequestMapping("review")
+@RequestMapping("/review")
 @RequiredArgsConstructor
 public class ReviewController {
 

@@ -1,1 +1,26 @@
 rootProject.name = 'reviewer'
+
+dependencyResolutionManagement {
+    versionCatalogs {
+        libs {
+            version('springBoot', '3.4.0')
+            version('springDM', '1.1.6')
+            version('lombok', '8.1.0')
+            version('mapstruct', '1.5.3.Final')
+            version('lombokMapstructBinding', '0.2.0')
+            version('preliquibase', '1.1.1')
+            version('postgresql', '42.7.4')
+
+            library('postgresql', 'org.postgresql', 'postgresql').versionRef('postgresql')
+            library('liquibase', 'org.liquibase', 'liquibase-core').version('4.17.2')
+            library('preliquibase', 'net.lbruun.springboot', 'preliquibase-spring-boot-starter').versionRef('preliquibase')
+            library('mapstruct', 'org.mapstruct', 'mapstruct').versionRef('mapstruct')
+            library('lombokMapstructBinding', 'org.projectlombok', 'lombok-mapstruct-binding').versionRef('lombokMapstructBinding')
+            library('mapstructProcessor', 'org.mapstruct', 'mapstruct-processor').versionRef('mapstruct')
+
+            plugin('lombok', 'io.freefair.lombok').versionRef('lombok')
+            plugin('springDM', 'io.spring.dependency-management').versionRef('springDM')
+            plugin('springBoot', 'org.springframework.boot').versionRef('springBoot')
+        }
+    }
+}
