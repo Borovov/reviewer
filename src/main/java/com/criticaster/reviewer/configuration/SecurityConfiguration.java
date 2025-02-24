@@ -1,4 +1,4 @@
-package com.criticaster.reviewer.configuration;
+/*package com.criticaster.reviewer.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,4 +13,4 @@ public class SecurityConfiguration {
     return (web) -> web.ignoring()
         .requestMatchers(new AntPathRequestMatcher("/**"));
   }
-}
+}*/

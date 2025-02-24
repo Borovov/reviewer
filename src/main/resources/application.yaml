@@ -1,6 +1,11 @@
 spring:
   application:
     name: reviewer
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8081/realms/reviewer
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5433/reviewer
@@ -13,6 +18,9 @@ spring:
     open-in-view: false
   liquibase:
     enabled: false
-    default-schema: ${DB_SCHEMA:pmp_ms_nsi}
-    liquibase-schema: ${DB_SCHEMA:pmp_ms_nsi}
-    change-log: classpath:db/changelog/db.changelog-master.xml
+    change-log: classpath:db/changelog/changelog-master.xml
+    parameters:
+      spring.datasource.password: reviewer
+  springdoc:
+    api-docs:
+      path: /api-docs

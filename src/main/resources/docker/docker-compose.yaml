@@ -1,21 +1,41 @@
+version: '3.8'
+
 services:
   postgres:
     image: postgres
-    restart: always
+    restart: no
     environment:
       POSTGRES_DB: reviewer
       POSTGRES_USER: reviewer
       POSTGRES_PASSWORD: reviewer
     ports:
-      - 5433:5432
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
   adminer:
     image: adminer
-    restart: always
+    restart: no
     ports:
-      - 8088:8080
+      - "8088:8080"
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    container_name: keycloak
+    restart: unless-stopped
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_DB: postgres
+      KC_DB_URL_HOST: postgres
+      KC_DB_URL_DATABASE: reviewer
+      KC_DB_USERNAME: reviewer
+      KC_DB_PASSWORD: reviewer
+    command: ["start-dev"]
+    ports:
+      - "8081:8080"
+    depends_on:
+      - postgres
 
 volumes:
   postgres_data:
