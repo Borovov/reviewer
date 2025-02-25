@@ -3,7 +3,7 @@ version: '3.8'
 services:
   postgres:
     image: postgres
-    restart: no
+    restart: unless-stopped
     environment:
       POSTGRES_DB: reviewer
       POSTGRES_USER: reviewer
@@ -12,10 +12,15 @@ services:
       - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U reviewer -d reviewer" ]
+      interval: 10s
+      retries: 5
+      start_period: 10s
 
   adminer:
     image: adminer
-    restart: no
+    restart: unless-stopped
     ports:
       - "8088:8080"
 
@@ -31,11 +36,12 @@ services:
       KC_DB_URL_DATABASE: reviewer
       KC_DB_USERNAME: reviewer
       KC_DB_PASSWORD: reviewer
-    command: ["start-dev"]
+    command: ["start-dev", "--log-level=DEBUG"]
     ports:
       - "8081:8080"
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
 
 volumes:
   postgres_data:
