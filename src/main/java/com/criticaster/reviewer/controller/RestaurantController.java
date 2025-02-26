@@ -16,17 +16,17 @@ public class RestaurantController {
         return ResponseEntity.ok("Список ресторанов");
     }
 
-    @PreAuthorize("hasRole('ROLE_OWNER')")
+    /*@PreAuthorize("hasRole('ROLE_OWNER')")
     @PostMapping
     public ResponseEntity<String> getRestaurantForOwner() {
         return ResponseEntity.ok("Страница ресторанов для владельцев");
-    }
+    }*/
 
-    /*@PreAuthorize("hasRole('ROLE_CUSTOMER')")
-    @GetMapping
+    @PreAuthorize("hasRole('ROLE_CUSTOMER')")
+    @PostMapping
     public ResponseEntity<String> getRestaurantForCustomer() {
         return ResponseEntity.ok("Страница ресторанов для клиентов");
-    }*/
+    }
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/reviews")

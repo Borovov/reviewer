@@ -10,6 +10,7 @@ dependencyResolutionManagement {
             version('lombokMapstructBinding', '0.2.0')
             version('preliquibase', '1.1.1')
             version('postgresql', '42.7.4')
+            //version('openapi-ui', '2.6.0')
             version('openapi', '2.6.0')
 
             library('postgresql', 'org.postgresql', 'postgresql').versionRef('postgresql')
@@ -18,7 +19,8 @@ dependencyResolutionManagement {
             library('mapstruct', 'org.mapstruct', 'mapstruct').versionRef('mapstruct')
             library('lombokMapstructBinding', 'org.projectlombok', 'lombok-mapstruct-binding').versionRef('lombokMapstructBinding')
             library('mapstructProcessor', 'org.mapstruct', 'mapstruct-processor').versionRef('mapstruct')
-            library('openapi', 'org.springdoc', 'springdoc-openapi-starter-webmvc-ui').versionRef('openapi')
+            library('openapi', 'org.springdoc', 'springdoc-openapi-starter-webmvc-api').versionRef('openapi')
+            library('openapiUI', 'org.springdoc', 'springdoc-openapi-starter-webmvc-ui').versionRef('openapi')
 
             plugin('lombok', 'io.freefair.lombok').versionRef('lombok')
             plugin('springDM', 'io.spring.dependency-management').versionRef('springDM')

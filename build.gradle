@@ -1,5 +1,6 @@
 plugins {
 	id 'java'
+	id 'org.openapi.generator' version '6.6.0'
 	alias(libs.plugins.springBoot)
 	alias(libs.plugins.springDM)
 	alias(libs.plugins.lombok)
@@ -30,6 +31,7 @@ dependencies {
 	implementation libs.preliquibase
 	implementation libs.mapstruct
 	implementation libs.openapi
+	implementation libs.openapiUI
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
@@ -43,6 +45,18 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+openApiGenerate {
+	generatorName = "spring"
+	inputSpec = "$rootDir/src/main/resources/openapi.yaml".toString()
+	outputDir = "$buildDir/generated"
+	//outputDir = layout.buildDirectory.dir("generated")
+	apiPackage = "com.criticaster.api"
+	modelPackage = "com.criticaster.model"
+	configOptions = [
+			dateLibrary: "java17"
+	]
 }
 
 tasks.named('test') {

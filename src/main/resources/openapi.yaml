@@ -1,0 +1,39 @@
+openapi: 3.0.3
+info:
+  title: Reviewer API
+  version: 1.0.0
+  description: API для отзывов и ресторанов
+
+servers:
+  - url: http://localhost:8080
+    description: Local server
+
+paths:
+  /api/reviews:
+    get:
+      summary: Получить все отзывы
+      description: Доступно только авторизованным пользователям
+      operationId: getAllReviews
+      tags:
+        - Reviews
+      responses:
+        "200":
+          description: Список отзывов
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Review"
+
+components:
+  schemas:
+    Review:
+      type: object
+      properties:
+        id:
+          type: integer
+        content:
+          type: string
+        rating:
+          type: integer
