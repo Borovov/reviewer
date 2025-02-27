@@ -1,0 +1,31 @@
+Review:
+  type: object
+  properties:
+    id:
+      type: integer
+    content:
+      type: string
+    rating:
+      type: integer
+
+Restaurant:
+  type: object
+  properties:
+    id:
+      type: integer
+    name:
+      type: string
+    city:
+      type: string
+
+Menu:
+  type: object
+  properties:
+    id:
+      type: integer
+    restaurantId:
+      type: integer
+    items:
+      type: array
+      items:
+        type: string

@@ -1,6 +1,6 @@
 plugins {
 	id 'java'
-	id 'org.openapi.generator' version '6.6.0'
+	id 'org.openapi.generator' version '7.0.1'
 	alias(libs.plugins.springBoot)
 	alias(libs.plugins.springDM)
 	alias(libs.plugins.lombok)
@@ -49,13 +49,13 @@ dependencies {
 
 openApiGenerate {
 	generatorName = "spring"
-	inputSpec = "$rootDir/src/main/resources/openapi.yaml".toString()
+	inputSpec = "$rootDir/src/main/resources/openapi/openapi.yaml"
 	outputDir = "$buildDir/generated"
-	//outputDir = layout.buildDirectory.dir("generated")
 	apiPackage = "com.criticaster.api"
 	modelPackage = "com.criticaster.model"
 	configOptions = [
-			dateLibrary: "java17"
+			dateLibrary: "java17",
+			interfaceOnly: "true"
 	]
 }
 

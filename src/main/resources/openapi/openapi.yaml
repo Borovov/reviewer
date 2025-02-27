@@ -1,0 +1,23 @@
+openapi: 3.0.3
+info:
+  title: Reviewer API
+  version: 1.0.0
+  description: API для отзывов и ресторанов
+
+servers:
+  - url: http://localhost:8080
+    description: Local server
+
+paths:
+  /api/cities:
+    $ref: "./cities.yaml"
+  /api/restaurants/{restaurantId}:
+    $ref: "./restaurants.yaml"
+  /api/restaurants/{restaurantId}/menu:
+    $ref: "./menu.yaml"
+  /api/restaurants/{restaurantId}/reviews:
+    $ref: "./reviews.yaml"
+
+components:
+  schemas:
+    - $ref: "./schemas.yaml"

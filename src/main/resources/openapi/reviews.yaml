@@ -1,0 +1,18 @@
+get:
+  summary: Получить отзывы о ресторане
+  operationId: getRestaurantReviews
+  parameters:
+    - name: restaurantId
+      in: path
+      required: true
+      schema:
+        type: integer
+  responses:
+    "200":
+      description: Список отзывов
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "./schemas.yaml#/Review"

@@ -1,0 +1,12 @@
+get:
+  summary: Получить список городов
+  operationId: getCities
+  responses:
+    "200":
+      description: Список городов
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: string

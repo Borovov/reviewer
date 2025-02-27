@@ -1,0 +1,16 @@
+get:
+  summary: Получить информацию о ресторане
+  operationId: getRestaurantById
+  parameters:
+    - name: restaurantId
+      in: path
+      required: true
+      schema:
+        type: integer
+  responses:
+    "200":
+      description: Информация о ресторане
+      content:
+        application/json:
+          schema:
+            $ref: "./schemas.yaml#/Restaurant"

@@ -1,0 +1,16 @@
+get:
+  summary: Получить меню ресторана
+  operationId: getRestaurantMenu
+  parameters:
+    - name: restaurantId
+      in: path
+      required: true
+      schema:
+        type: integer
+  responses:
+    "200":
+      description: Меню ресторана
+      content:
+        application/json:
+          schema:
+            $ref: "./schemas.yaml#/Menu"
